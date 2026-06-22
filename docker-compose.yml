@@ -8,7 +8,7 @@ services:
     ports:
       - "4566:4566"
     healthcheck:
-      test: ["CMD-SHELL", "curl -sf http://localhost:4566/_ministack/health || wget -qO- http://localhost:4566/_ministack/health > /dev/null 2>&1"]
+      test: ["CMD-SHELL", "python3 -c 'import socket; s=socket.create_connection((\"localhost\",4566),timeout=2); s.close()'"]
       interval: 3s
       timeout: 5s
       retries: 40
